@@ -4,26 +4,31 @@
       <a class="item" @click="visible = !visible">
         <i class="bars icon"></i>
       </a>
-      <router-link class="item" to ="/about">
-        <i class="question icon"/>
-        <span class="fat-only">關於本公司</span>
-      </router-link>
-      <router-link class="item" to ="/news">
-        <i class="bullhorn icon"/>
-        <span class="fat-only">最新消息</span>
-      </router-link>
-      <router-link class="item" to ="/projects">
-        <i class="edit icon"/>
-        <span class="fat-only">熱銷新案</span>
-      </router-link>
-      <router-link class="item" to ="/classic">
-        <i class="file alternate icon"/>
-        <span class="fat-only">經典作品</span>
-      </router-link>
-      <router-link class="item" to ="/contact">
-        <i class="phone icon"/>
-        <span class="fat-only">聯絡方式</span>
-      </router-link>
+      <div class="right menu">
+        <router-link class="item" to ="/">
+          <i class="home icon"/>
+        </router-link>
+        <router-link class="item" to ="/about">
+          <i class="question icon"/>
+          <span class="fat-only">關於本公司</span>
+        </router-link>
+        <router-link class="item" to ="/news">
+          <i class="bullhorn icon"/>
+          <span class="fat-only">最新消息</span>
+        </router-link>
+        <router-link class="item" to ="/projects">
+          <i class="edit icon"/>
+          <span class="fat-only">熱銷新案</span>
+        </router-link>
+        <router-link class="item" to ="/classic">
+          <i class="file alternate icon"/>
+          <span class="fat-only">經典作品</span>
+        </router-link>
+        <router-link class="item" to ="/contact">
+          <i class="phone icon"/>
+          <span class="fat-only">聯絡方式</span>
+        </router-link>
+      </div>
     </nav>
     <sui-sidebar-pushable>
       <sui-menu
@@ -65,13 +70,13 @@ export default {
   name: 'DemoApp',
   data () {
     return {
-      visible: true
+      visible: false
     }
   },
   mounted () {
     console.log(window.innerWidth)
-    if (window.innerWidth < 701) {
-      this.visible = false
+    if (window.innerWidth > 700) {
+      // this.visible = true
     }
   }
 }
@@ -87,6 +92,12 @@ export default {
   color: #2c3e50;
 }
 
+@media screen and (max-width: 700px) {
+  .fat-only {
+    display: none !important;
+  }
+}
+
 nav.ui.menu {
   margin-bottom: 0;
   border-radius: 0;
@@ -96,9 +107,8 @@ nav.ui.menu {
   min-height: 80vh;
 }
 
-@media screen and (max-width: 700px) {
-  .fat-only {
-    display: none !important;
-  }
+p {
+  font-size: 18px;
 }
+
 </style>
