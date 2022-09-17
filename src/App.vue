@@ -9,7 +9,7 @@
           <i class="home icon"/>
         </router-link>
         <router-link class="item" to ="/about">
-          <i class="question icon"/>
+          <i class="info icon thin-only"/>
           <span class="fat-only">關於本公司</span>
         </router-link>
         <router-link class="item" to ="/news">
@@ -42,7 +42,7 @@
       >
         <sui-menu-item><router-link to="/"> <sui-icon name="home" /> 首頁 </router-link></sui-menu-item>
         <sui-menu-item><router-link to="/about">
-          <sui-icon name="question" /> 關於本公司
+          <sui-icon name="info" /> 關於本公司
         </router-link></sui-menu-item>
         <sui-menu-item><router-link to="/news">
           <sui-icon name="bullhorn" /> 最新消息
