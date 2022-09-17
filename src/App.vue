@@ -98,6 +98,12 @@ export default {
   }
 }
 
+@media screen and (min-width: 701px) {
+  .thin-only {
+    display: none !important;
+  }
+}
+
 nav.ui.menu {
   margin-bottom: 0;
   border-radius: 0;

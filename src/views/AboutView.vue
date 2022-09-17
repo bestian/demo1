@@ -2,6 +2,8 @@
   <div class="about">
     <div class="ui segment container">
       <h1>關於本公司</h1>
+
+      <img class="logo" alt="logo" src="https://picsum.photos/seed/picsum1/300/200" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ullamcorper eros sit amet viverra euismod. Duis viverra posuere tellus, non mollis eros mattis eget. In hac habitasse platea dictumst. Vivamus facilisis posuere lacus porta congue. Donec ac massa ante. Integer mollis porttitor viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet tincidunt ipsum, id cursus nisl. Nulla sem orci, condimentum id lacus ac, euismod vehicula dui. Aliquam efficitur erat justo, a porta quam porttitor id. Integer imperdiet pulvinar neque, eget ornare nunc fermentum eget. Phasellus metus nisl, luctus scelerisque interdum id, aliquet id magna. In sed posuere arcu, a ullamcorper metus.
 
@@ -30,3 +32,9 @@ export default {
   name: 'AboutView'
 }
 </script>
+
+<style type="text/css" scoped>
+  .logo {
+    border-radius: 30px;
+  }
+</style>
