@@ -20,7 +20,7 @@
           <i class="edit icon"/>
           <span class="fat-only">熱銷新案</span>
         </router-link>
-        <router-link class="item" to ="/classic">
+        <router-link class="item" to ="/classics">
           <i class="file alternate icon"/>
           <span class="fat-only">經典作品</span>
         </router-link>
