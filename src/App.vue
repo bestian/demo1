@@ -53,9 +53,7 @@
         </router-link></sui-menu-item>
       </sui-menu>
       <sui-sidebar-pusher>
-        <sui-segment>
-          <router-view/>
-        </sui-segment>
+        <router-view/>
       </sui-sidebar-pusher>
     </sui-sidebar-pushable>
   </div>
