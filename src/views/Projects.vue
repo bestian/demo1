@@ -7,7 +7,7 @@
           {{p.n}}
         </h3>
         <div class="image">
-          <img :src="'https://picsum.photos/seed/picsum' + idx + '/200/300'" />
+          <img :src="'https://picsum.photos/seed/picsum' + idx + '/300/200'" />
         </div>
         <p class="description">
           {{p.d}}
@@ -19,21 +19,37 @@
 
 <script type="text/javascript">
 
+function csvToArray (text) {
+  const [header, ...lines] = text.replace(/\r/g, '').replace(/"/g, '').split('\n')
+
+  const objHeaders = header.split(',')
+
+  const mergeObjects = (oArr) => Object.assign({}, ...oArr)
+
+  const extractObjPartial = (row, i) => ({ [objHeaders[i]]: row })
+
+  const lineToObject = (line) =>
+    mergeObjects(line.split(',').map(extractObjPartial))
+
+  const table = lines.map(lineToObject)
+
+  return table
+}
+
 export default {
   name: 'ProjectsView',
   data () {
     return {
       projects: [
-        { n: 'Lorem Ipsum', date: '2022-09-17', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-09-15', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-09-12', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-09-10', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-09-05', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-08-26', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-08-17', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' },
-        { n: 'Lorem Ipsum', date: '2022-08-09', href: '', d: 'Donec euismod lacus at condimentum lacinia. Fusce lacinia, sapien eu tristique fermentum, arcu mauris dictum magna, non interdum libero massa sed est. Proin convallis libero et sodales euismod.' }
       ]
     }
+  },
+  mounted () {
+    const vm = this
+    vm.$http.get('https://docs.google.com/spreadsheets/d/1-OqLS6Jj4S-FbhzZ1L_JrjnBCY5W6vzfKanYJLWsy8M/gviz/tq?tqx=out:csv&sheet=projects').then((response) => {
+      vm.projects = csvToArray(response.data)
+      console.log(vm.projects)
+    })
   }
 }
 </script>

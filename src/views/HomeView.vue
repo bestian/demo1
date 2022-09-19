@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img class="logo" alt="logo" src="https://picsum.photos/id/866/1024/800">
+    <img class="logo fat-only" alt="logo" src="https://picsum.photos/id/866/1200/800">
+    <img class="logo2 thin-only" alt="logo2" src="https://picsum.photos/id/866/400/600">
   </div>
 </template>
 
@@ -17,8 +18,8 @@ export default {
 </script>
 
 <style type="text/css" scoped>
-  .logo {
+  .logo, .logo2 {
     width: 100%;
-    min-height: 88vh;
+    height: 100vh;
   }
 </style>

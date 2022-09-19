@@ -9,22 +9,37 @@
 
 <script type="text/javascript">
 
+function csvToArray (text) {
+  const [header, ...lines] = text.replace(/\r/g, '').replace(/"/g, '').split('\n')
+
+  const objHeaders = header.split(',')
+
+  const mergeObjects = (oArr) => Object.assign({}, ...oArr)
+
+  const extractObjPartial = (row, i) => ({ [objHeaders[i]]: row })
+
+  const lineToObject = (line) =>
+    mergeObjects(line.split(',').map(extractObjPartial))
+
+  const table = lines.map(lineToObject)
+
+  return table
+}
+
 export default {
   name: 'NewsView',
   data () {
     return {
       news: [
-        { name: 'Lorem Ipsum', date: '2022-09-17', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-09-15', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-09-12', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-09-10', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-09-05', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-08-26', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-08-17', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-08-09', href: '' },
-        { name: 'Lorem Ipsum', date: '2022-07-27', href: '' }
       ]
     }
+  },
+  mounted () {
+    const vm = this
+    vm.$http.get('https://docs.google.com/spreadsheets/d/1-OqLS6Jj4S-FbhzZ1L_JrjnBCY5W6vzfKanYJLWsy8M/gviz/tq?tqx=out:csv&sheet=news').then((response) => {
+      vm.news = csvToArray(response.data)
+      console.log(vm.news)
+    })
   }
 }
 </script>
