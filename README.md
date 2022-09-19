@@ -13,6 +13,8 @@
 7. 整體架構
 8. 佈置上網
 
+https://docs.google.com/spreadsheets/d/1ueQ7SthuH45XfJlf4d-hhOjGhpxgNMvRogjVM_wd7bI/edit?usp=sharing
+
 ## Project setup
 ```
 npm install
